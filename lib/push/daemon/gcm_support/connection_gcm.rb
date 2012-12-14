@@ -60,6 +60,9 @@ module Push
                      "Content-type" => "application/json",
                      "Content-length" => "#{data.length}" }
           uri = URI.parse(PUSH_URL)
+
+          Push::Daemon.logger.info("Send request with key: #{@provider.configuration[:key]}")
+
           post(uri, data, headers)
         end
 
